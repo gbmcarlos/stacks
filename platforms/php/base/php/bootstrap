@@ -1,0 +1,4 @@
+#!/opt/bin/php
+<?php
+
+require getenv('LAMBDA_TASK_ROOT') . '/src/server.php';
