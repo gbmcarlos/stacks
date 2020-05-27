@@ -36,10 +36,6 @@ ONBUILD RUN /var/task/node_modules/webpack/bin/webpack.js \
 ### Now that we've copied the source code, dump the autoloader, optimized by default
 ONBUILD RUN composer dump-autoload -v --classmap-authoritative --no-dev --no-interaction --no-ansi
 
-### Copy the init script that will start nginx and php-fpm
-ONBUILD COPY ./bin/up.sh /var/task/bin/up.sh
-ONBUILD RUN chmod +x /var/task/bin/up.sh
-
 ### Project-specific config files
 ONBUILD COPY config/php.ini "/var/task/php/conf.d/php.ini"
 ONBUILD COPY config/php-fpm.ini "/var/task/php-fpm/conf.d/php-fpm.ini"

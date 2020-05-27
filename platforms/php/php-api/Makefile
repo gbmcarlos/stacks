@@ -3,7 +3,7 @@
 
 export DOCKER_BUILDKIT ?= 1
 
-TAG := lumen
+TAG := php-api
 
 publish: build
 	docker push ${REPOSITORY}:${TAG}

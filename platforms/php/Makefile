@@ -1,32 +1,23 @@
-# Location of the docker images
-base_php := base/php
-base_php_nginx := base/php-nginx
-stack_lumen := stacks/lumen
-stack_laravel := stacks/laravel
+# All the stacks together
+stacks := php php-nginx php-api php-web
 
-# Group them as base and stack
-base := $(base_php) $(base_php_nginx)
-stacks := $(stack_lumen) $(stack_laravel)
-
-# All of them together
-images := $(base) $(stacks)
-
-.PHONY: build $(base) $(stacks)
+.PHONY: publish build $(stacks)
 
 export REPOSITORY := gbmcarlos/stacks
 
-# You can delegate 'publish' and 'build' targets
+# Delegate 'publish' and 'build' targets to each stack
 publish build: $(stacks)
 
+# php-api and php-web depend on php-nginx
+php-api php-web: php-nginx
+
 # php-nginx depends on php
-$(base_php_nginx): $(base)
+php-nginx: $(php)
 
-# and the stacks depends on php-nginx
-$(stacks): $(base_php_nginx)
-
-# and the way to make each image os to sub-make them in the directory
-$(images):
+# The way to make each stack is to sub-make them in the directory
+$(stacks):
 	$(MAKE) --directory=$@ $(TARGET)
 
+# extra target to extract the /opt folder of the lambda-compatible base php stack
 lambda/publish:
-	$(MAKE) --directory=$(base_php) lambda/publish
+	$(MAKE) --directory=php lambda/publish

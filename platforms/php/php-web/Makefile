@@ -3,7 +3,7 @@
 
 export DOCKER_BUILDKIT ?= 1
 
-TAG := laravel
+TAG := php-web
 
 publish: build
 	docker push ${REPOSITORY}:${TAG}
