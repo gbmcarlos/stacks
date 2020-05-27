@@ -5,8 +5,11 @@ stacks := php php-nginx php-api php-web
 
 export REPOSITORY := gbmcarlos/stacks
 
-# Delegate 'publish' and 'build' targets to each stack
-publish build: $(stacks)
+publish: build
+	docker push ${REPOSITORY}
+
+# Delegate 'build' to each stack
+build: $(stacks)
 
 # php-api and php-web depend on php-nginx
 php-api php-web: php-nginx

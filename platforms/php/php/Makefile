@@ -5,9 +5,6 @@ export DOCKER_BUILDKIT ?= 1
 
 TAG := php
 
-publish: build
-	docker push ${REPOSITORY}:${TAG}
-
 build:
 	docker build \
 	-t ${REPOSITORY}:${TAG} \

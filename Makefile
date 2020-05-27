@@ -4,12 +4,12 @@ php := platforms/php
 # List of all platforms
 platforms := $(php)
 
-.PHONY: stacks $(platforms)
+.PHONY: publish build $(platforms)
 
 export REPOSITORY := gbmcarlos/stacks
 
 # Making all the stacks means making the stacks of each platform
-stacks: $(platforms)
+publish build: $(platforms)
 
 # Making a platform means sub-making (the given target) on that platform's directory
 $(platforms):
