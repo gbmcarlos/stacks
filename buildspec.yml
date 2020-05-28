@@ -1,0 +1,17 @@
+version: 0.2
+
+phases:
+    pre_build:
+        commands:
+            - aws --version
+            - echop ${DOCKER_HUB_PASSWORD} | docker login --username ${DOCKER_HUB_USERNAME] --password-stdin
+    build:
+        commands:
+            - make publish
+            - cd platforms/php; make lambda/extract; mv php-bin.zip ../..; cd ../..
+    post_build:
+        commands:
+            - aws cloudformation package --template-file sam.yaml --s3-bucket ${SAM_ARTIFACTS_BUCKET} --output-template-file sam-output.yaml
+artifacts:
+    files:
+        - sam-output.yaml

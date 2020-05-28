@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: This Lambda Application provides the base Lambda Layers to run PHP projects as Lambda FUnction
+
+Resources:
+  PhpBinLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: php-74
+      Description: This layer provides PHP and Composer binaries under /opt/bin/
+      CompatibleRuntimes:
+        - provided
+      ContentUri: ./php-bin.zip
+  LatestPhpBinLayerParameter:
+    Type: AWS::SSM::Parameter
+    Properties:
+      Name: latest-php-bin-layer
+      Type: String
+      Value: !Ref PhpBinLayer
+Outputs:
+  PhpBinLayerArn:
+    Value: !Ref PhpBinLayer
+    Description: ARN of the latest PHP bin layer
