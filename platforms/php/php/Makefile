@@ -11,10 +11,6 @@ build:
 	--target base \
 	.
 
-# TODO: implement publishing to AWS Lambda
-lambda/publish: lambda/extract
-	echo "Published PHP Lambda layer"
-
 lambda/extract: build
 	docker run \
 	--rm \

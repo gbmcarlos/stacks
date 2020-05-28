@@ -22,5 +22,5 @@ $(stacks):
 	$(MAKE) --directory=$@ $(TARGET)
 
 # extra target to extract the /opt folder of the lambda-compatible base php stack
-lambda/publish:
-	$(MAKE) --directory=php lambda/publish
+lambda/extract:
+	$(MAKE) --directory=php lambda/extract
