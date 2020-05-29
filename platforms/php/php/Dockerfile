@@ -43,3 +43,6 @@ COPY --from=target-composer /usr/bin/composer /opt/bin/composer
 
 ### Add /usr/sbin to the path
 ENV PATH="/usr/sbin:${PATH}"
+
+### Bref adds this env var. Remove it. AWS Lambda will add it when it's time
+ENV LAMBDA_TASK_ROOT=""
