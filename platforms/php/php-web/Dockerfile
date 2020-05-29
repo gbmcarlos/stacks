@@ -14,20 +14,20 @@ RUN     curl -sL https://rpm.nodesource.com/setup_${NODEJS_VERSION}.x | bash - \
 
 ## NOM dependencies
 ### Install just the dependencies, without the code
-ONBUILD COPY ./package* /var/task/
+ONBUILD COPY ./package* ./
 ONBUILD RUN npm install
 
 ## Composer dependencies
 ### Install just the dependencies, without the code, so no need to dump the autoloader yet
-ONBUILD COPY ./composer.* /var/task/
+ONBUILD COPY ./composer.* ./
 ONBUILD RUN composer install -v --no-autoloader --no-suggest --no-dev --no-interaction --no-ansi
 
 ## Source code
-ONBUILD COPY --chown=www:www ./src /var/task/src
+ONBUILD COPY --chown=www:www ./src ./src
 
 ## Aggregate assets
-ONBUILD COPY ./webpack.mix.js /var/task/webpack.mix.js
-ONBUILD RUN /var/task/node_modules/webpack/bin/webpack.js \
+ONBUILD COPY ./webpack.mix.js ./webpack.mix.js
+ONBUILD RUN ./node_modules/webpack/bin/webpack.js \
                 --hide-modules \
                 --config=/var/task/node_modules/laravel-mix/setup/webpack.config.js \
                 -p
@@ -37,9 +37,9 @@ ONBUILD RUN /var/task/node_modules/webpack/bin/webpack.js \
 ONBUILD RUN composer dump-autoload -v --classmap-authoritative --no-dev --no-interaction --no-ansi
 
 ### Project-specific config files
-ONBUILD COPY config/php.ini "/var/task/php/conf.d/php.ini"
-ONBUILD COPY config/php-fpm.ini "/var/task/php-fpm/conf.d/php-fpm.ini"
-ONBUILD COPY config/nginx.conf "/etc/nginx/nginx.conf"
+ONBUILD COPY config/php.ini ./php/conf.d/php.ini
+ONBUILD COPY config/php-fpm.ini ./php-fpm/conf.d/php-fpm.ini
+ONBUILD COPY config/nginx.conf /etc/nginx/nginx.conf
 
 ## ENV VARS
 ### Release and other app-defining env vars

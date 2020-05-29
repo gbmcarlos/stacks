@@ -15,7 +15,7 @@ echo 'Starting PHP-FPM';
 php-fpm \
     --allow-to-run-as-root \
     --nodaemonize \
-    --fpm-config "/var/task/php-fpm/conf.d/php-fpm.ini" \
+    --fpm-config /var/task/php-fpm/conf.d/php-fpm.ini \
     2>&1 &
 PHP_FPM_PID=$!
 
