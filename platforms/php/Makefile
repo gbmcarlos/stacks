@@ -2,6 +2,7 @@
 stacks := php php-nginx php-api php-web
 
 .PHONY: publish build $(stacks)
+.DEFAULT_GOAL := build
 
 export REPOSITORY := gbmcarlos/stacks
 

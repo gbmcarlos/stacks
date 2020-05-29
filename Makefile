@@ -5,10 +5,11 @@ php := platforms/php
 platforms := $(php)
 
 .PHONY: publish build $(platforms)
+.DEFAULT_GOAL := build
 
 export REPOSITORY := gbmcarlos/stacks
 
-# Making all the stacks means making the stacks of each platform
+# Delegate publish and build
 publish build: $(platforms)
 
 # Making a platform means sub-making (the given target) on that platform's directory
