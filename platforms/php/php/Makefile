@@ -17,4 +17,4 @@ lambda/extract: build
 	-v $(PWD):/var/mount \
 	--entrypoint /bin/sh \
 	${REPOSITORY}:${TAG} \
-	-c "cd /opt; zip -r /var/mount/php-bin.zip ./*"
+	-c "cd /opt; zip -r /var/mount/php-bin.zip ./bin ./bootstrap ./bref"
