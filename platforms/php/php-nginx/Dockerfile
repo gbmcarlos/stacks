@@ -20,10 +20,10 @@ RUN     groupadd www \
     &&  chown -R www:www /var/tmp/nginx
 
 ### Copy the init script
-COPY init.sh /var/task/bin/init.sh
+COPY init.sh /opt/bin/init.sh
 
 ### By default, execute the init.sh script
-CMD ["/bin/sh", "-c", "/var/task/bin/init.sh"]
+CMD ["/bin/sh", "-c", "/opt/bin/init.sh"]
 
 WORKDIR /var/task
 
