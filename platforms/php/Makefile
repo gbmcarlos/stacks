@@ -20,7 +20,7 @@ php-nginx: $(php)
 
 # The way to make each stack is to sub-make them in the directory
 $(stacks):
-	$(MAKE) --directory=$@ $(TARGET)
+	$(MAKE) --directory=$@
 
 # extra target to extract the /opt folder of the lambda-compatible base php stack
 lambda/extract:

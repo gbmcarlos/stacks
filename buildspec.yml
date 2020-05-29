@@ -7,7 +7,7 @@ phases:
             - echo ${DOCKER_HUB_PASSWORD} | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
     build:
         commands:
-            - make publish
+            - make TARGET=publish
             - cd platforms/php; make lambda/extract; mv php-bin.zip ../..; cd ../..
     post_build:
         commands:
