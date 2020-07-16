@@ -11,3 +11,4 @@ phases:
 artifacts:
     files:
         - platforms/php/php-lambda/sam-output.yaml
+    discard-paths: yes
