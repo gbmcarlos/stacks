@@ -4,14 +4,14 @@ Description: This SAM Application provides the base Lambda Layers to run PHP pro
 
 Metadata:
   AWS::ServerlessRepo::Application:
-    Name: php-lambda-runtime
+    Name: lambda-php-74
     Description: This SAM Application provides the base Lambda Layer to run PHP projects as Lambda Functions
     Author: gbmcarlos
     SpdxLicenseId: MIT
     ReadmeUrl: ./README.md
     HomePageUrl: https://github.com/gbmcarlos/stacks
     SourceCodeUrl: https://github.com/gbmcarlos/stacks
-    SemanticVersion: 1.0
+    SemanticVersion: '1.0'
 
 Resources:
   PhpBinLayer:
