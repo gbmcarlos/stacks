@@ -7,11 +7,7 @@ phases:
             - echo ${DOCKER_HUB_PASSWORD} | docker login --username ${DOCKER_HUB_USERNAME} --password-stdin
     build:
         commands:
-            - make TARGET=publish
-            - cd platforms/php; make lambda/extract; mv php-bin.zip ../..; cd ../..
-    post_build:
-        commands:
-            - aws cloudformation package --template-file sam.yaml --s3-bucket ${SAM_ARTIFACTS_BUCKET} --output-template-file sam-output.yaml
+            - make TARGET=publish SAM_ARTIFACTS_BUCKET=${SAM_ARTIFACTS_BUCKET}
 artifacts:
     files:
         - platforms/php/php-lambda/sam-output.yaml
