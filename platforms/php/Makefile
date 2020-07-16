@@ -6,7 +6,8 @@ stacks := php php-nginx php-api php-web
 
 export REPOSITORY := gbmcarlos/stacks
 
-publish: build
+# Delegate publish, and then push all images
+publish: $(stacks)
 	docker push ${REPOSITORY}
 
 # Delegate 'build' to each stack
@@ -20,7 +21,7 @@ php-nginx: $(php)
 
 # The way to make each stack is to sub-make them in the directory
 $(stacks):
-	$(MAKE) --directory=$@
+	$(MAKE) -C $@ $(TARGET)
 
 # extra target to extract the /opt folder of the lambda-compatible base php stack
 lambda/extract:

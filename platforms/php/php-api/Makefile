@@ -9,4 +9,7 @@ build:
 	docker build \
 	-t ${REPOSITORY}:${TAG} \
 	--target stack \
-	.
+	${CURDIR}
+
+# Empty publish because the parent make will push the docker image
+publish: build

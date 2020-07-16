@@ -9,7 +9,7 @@ build:
 	docker build \
 	-t ${REPOSITORY}:${TAG} \
 	--target base \
-	.
+	${CURDIR}
 
 lambda/extract: build
 	docker run \
@@ -18,3 +18,5 @@ lambda/extract: build
 	--entrypoint /bin/sh \
 	${REPOSITORY}:${TAG} \
 	-c "cd /opt; zip -r /var/mount/php-bin.zip ./bin ./bootstrap ./bref"
+# Empty publish because the parent make will push the docker image
+publish: build
