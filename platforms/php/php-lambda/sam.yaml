@@ -8,6 +8,7 @@ Metadata:
     Description: This SAM Application provides the base Lambda Layer to run PHP projects as Lambda Functions
     Author: gbmcarlos
     SpdxLicenseId: MIT
+    LicenseUrl: ./LICENSE.txt
     ReadmeUrl: ./README.md
     HomePageUrl: https://github.com/gbmcarlos/stacks
     SourceCodeUrl: https://github.com/gbmcarlos/stacks
