@@ -14,4 +14,4 @@ phases:
             - aws cloudformation package --template-file sam.yaml --s3-bucket ${SAM_ARTIFACTS_BUCKET} --output-template-file sam-output.yaml
 artifacts:
     files:
-        - sam-output.yaml
+        - platforms/php/php-lambda/sam-output.yaml

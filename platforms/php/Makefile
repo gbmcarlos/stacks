@@ -1,5 +1,5 @@
 # All the stacks together
-stacks := php php-nginx php-api php-web
+stacks := php php-nginx php-api php-web php-lambda
 
 .PHONY: publish build $(stacks)
 .DEFAULT_GOAL := build
@@ -22,7 +22,3 @@ php-nginx: $(php)
 # The way to make each stack is to sub-make them in the directory
 $(stacks):
 	$(MAKE) -C $@ $(TARGET)
-
-# extra target to extract the /opt folder of the lambda-compatible base php stack
-lambda/extract:
-	$(MAKE) --directory=php lambda/extract
