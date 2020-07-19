@@ -20,7 +20,12 @@ ONBUILD RUN npm install
 ## Composer dependencies
 ### Install just the dependencies, without the code, so no need to dump the autoloader yet
 ONBUILD COPY ./composer.* ./
-ONBUILD RUN composer install -v --no-autoloader --no-suggest --no-dev --no-interaction --no-ansi
+ONBUILD RUN     composer global require \
+                    -v --no-suggest --no-interaction --no-ansi \
+                    hirak/prestissimo:0.3.8 \
+            &&  composer install \
+                    -v --no-autoloader --no-suggest --no-dev --no-interaction --no-ansi \
+            &&  rm -rf /root/.composer
 
 ## Source code
 ONBUILD COPY --chown=www:www ./src ./src
