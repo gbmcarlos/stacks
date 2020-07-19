@@ -12,7 +12,7 @@ Metadata:
     ReadmeUrl: ./README.md
     HomePageUrl: https://github.com/gbmcarlos/stacks
     SourceCodeUrl: https://github.com/gbmcarlos/stacks
-    SemanticVersion: '0.0.2'
+    SemanticVersion: '0.0.3'
 
 Resources:
   PhpBinLayer:
