@@ -13,11 +13,12 @@ RUN     yum clean all \
     &&  yum install -y \
             nginx
 
-### Set up nginx's permissions
+### Set up permissions
 RUN     groupadd www \
     &&  adduser -g www www \
     &&  mkdir -p /var/tmp/nginx \
-    &&  chown -R www:www /var/tmp/nginx
+    &&  chown -R www:www /var/tmp/nginx \
+    &&  chown -R www:www /tmp
 
 ### Copy the init script
 COPY init.sh /opt/bin/init.sh
@@ -26,4 +27,3 @@ COPY init.sh /opt/bin/init.sh
 CMD ["/bin/sh", "-c", "/opt/bin/init.sh"]
 
 WORKDIR /var/task
-
