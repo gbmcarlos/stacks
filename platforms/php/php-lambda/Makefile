@@ -1,5 +1,5 @@
 .DEFAULT_GOAL := build
-.PHONY: extract build publish clean
+.PHONY: extract build publish
 
 TAG := php
 
@@ -10,7 +10,7 @@ build:
 	-v ${CURDIR}:/var/mount \
 	--entrypoint /bin/sh \
 	${REPOSITORY}:${TAG} \
-	-c "cd /opt; zip -r /var/mount/php-bin.zip ./bin ./bootstrap ./bref"
+	-c "cd /opt; zip -r /var/mount/php-runtime.zip ./bin ./bootstrap ./bref"
 
 # Package the SAM template
 publish: build

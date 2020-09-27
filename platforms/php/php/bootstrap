@@ -1,4 +1,3 @@
-#!/opt/bin/php
-<?php
+#!/usr/bin/env bash
 
-require getenv('LAMBDA_TASK_ROOT') . '/src/public/index.php';
+php /opt/php-runtime.phar
