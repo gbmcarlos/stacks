@@ -1,5 +1,5 @@
 # All the stacks together
-stacks := php php-nginx php-api php-web php-lambda
+stacks := php-base php php-nginx php-api php-web php-lambda
 
 .PHONY: publish build $(stacks)
 .DEFAULT_GOAL := build
@@ -18,6 +18,9 @@ php-api php-web: php-nginx
 
 # php-nginx depends on php
 php-nginx: $(php)
+
+# php-nginx depends on php
+php: $(php-base)
 
 # The way to make each stack is to sub-make them in the directory
 $(stacks):
